@@ -1,0 +1,28 @@
+!--JAVA SCRIPT CODE TO VISUALIZE THE CHARTS-->
+<script type="text/javascript">
+        google.charts.load('current', {'packages':['gauge']});
+        google.charts.setOnLoadCallback(drawGauge);
+
+        var gaugeOptions = {min: 0, max: 100, yellowFrom: 75, yellowTo: 90,
+        redFrom: 90, redTo: 100, minorTicks: 5,
+        width: 400, height: 225};
+        var gauge;
+        var visualization = new google.visualization.Gauge(container);
+
+        function drawGauge() {
+        gaugeData = new google.visualization.DataTable();
+        gaugeData.addColumn('number', 'Trash Level');
+
+        gaugeData.addRows(2);
+        gaugeData.setCell(0, 0, 0);
+
+        gauge = new google.visualization.Gauge(document.getElementById('gauge_div'));
+        gauge.draw(gaugeData, gaugeOptions);
+        }
+
+        function changeTemp(dir) {
+        drawGauge();
+        gaugeData.setValue(0, 0, dir);
+        gauge.draw(gaugeData, gaugeOptions);
+        }
+    </script>
